@@ -1,0 +1,24 @@
+{
+  "name": "maidem/stacktree",
+  "type": "typo3-cms-extension",
+  "description": "Tech-Stack als Baumdiagramm: Knoten im Backend pflegen, als SVG mit geschwungenen Linien ausgeben.",
+  "homepage": "https://maidem.de",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "php": ">=8.4.0",
+    "typo3/cms-core": "^14.1",
+    "typo3/cms-backend": "^14.1",
+    "typo3/cms-extbase": "^14.1",
+    "typo3/cms-fluid": "^14.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Maidem\\Stacktree\\": "Classes/"
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "maidem_stacktree"
+    }
+  }
+}

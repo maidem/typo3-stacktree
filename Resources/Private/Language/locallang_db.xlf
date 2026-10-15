@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="de" datatype="plaintext" original="locallang_db.xlf">
+        <body>
+            <trans-unit id="node"><source>Stack node</source><target>Stack-Knoten</target></trans-unit>
+            <trans-unit id="node.title"><source>Title</source><target>Titel</target></trans-unit>
+            <trans-unit id="node.subtitle"><source>Subtitle</source><target>Untertitel</target></trans-unit>
+            <trans-unit id="node.icon"><source>Icon</source><target>Icon</target></trans-unit>
+            <trans-unit id="node.status"><source>Status</source><target>Status</target></trans-unit>
+            <trans-unit id="node.status.built"><source>Built</source><target>Gebaut</target></trans-unit>
+            <trans-unit id="node.status.planned"><source>Planned</source><target>Geplant</target></trans-unit>
+            <trans-unit id="node.link"><source>Link</source><target>Link</target></trans-unit>
+            <trans-unit id="node.parent"><source>Parent node</source><target>Elternknoten</target></trans-unit>
+            <trans-unit id="node.parent.description"><source>Empty = top level of the tree.</source><target>Leer = oberste Ebene des Baums.</target></trans-unit>
+            <trans-unit id="node.tag"><source>Tag</source><target>Tag</target></trans-unit>
+            <trans-unit id="node.tag.description"><source>Short label at the right of the tile, e.g. v14 or Live.</source><target>Kurzes Label rechts in der Kachel, z. B. v14 oder Live.</target></trans-unit>
+            <trans-unit id="node.category"><source>Category</source><target>Kategorie</target></trans-unit>
+            <trans-unit id="node.category.own"><source>Own (violet)</source><target>Eigene Extension (violett)</target></trans-unit>
+            <trans-unit id="node.category.external"><source>External (grey)</source><target>Extern / Composer (grau)</target></trans-unit>
+            <trans-unit id="node.category.frontend"><source>Frontend (amber)</source><target>Frontend (bernstein)</target></trans-unit>
+            <trans-unit id="node.category.infra"><source>Infrastructure (blue)</source><target>Infrastruktur (blau)</target></trans-unit>
+            <trans-unit id="node.category.other"><source>Other</source><target>Sonstige</target></trans-unit>
+        </body>
+    </file>
+</xliff>

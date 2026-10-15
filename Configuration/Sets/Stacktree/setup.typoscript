@@ -1,0 +1,8 @@
+plugin.tx_stacktree {
+    view {
+        templateRootPaths.0 = EXT:maidem_stacktree/Resources/Private/Templates/
+        partialRootPaths.0 = EXT:maidem_stacktree/Resources/Private/Partials/
+    }
+}
+
+page.includeCSS.stacktree = EXT:maidem_stacktree/Resources/Public/Css/stacktree.css

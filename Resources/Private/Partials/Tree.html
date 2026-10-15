@@ -1,0 +1,23 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<svg class="cb-stacktree__svg cb-stacktree__svg--{variant}" viewBox="0 0 {diagram.width} {diagram.height}" style="max-width:{diagram.width}px" role="group" aria-label="{label}">
+    <g fill="none">
+        <f:for each="{diagram.edges}" as="edge">
+            <path class="cb-stacktree__edge{f:if(condition: edge.planned, then: ' is-planned')}" d="{edge.d}" pathLength="1" style="--i:{edge.depth}" />
+        </f:for>
+    </g>
+    <f:for each="{diagram.nodes}" as="n">
+        <f:if condition="{n.href}">
+            <f:then>
+                <a class="cb-stacktree__node cat-{n.category}{f:if(condition: n.planned, then: ' is-planned')}" href="{n.href}" transform="translate({n.x} {n.y})" style="--i:{n.depth}">
+                    <f:render partial="Tile" arguments="{n: n}" />
+                </a>
+            </f:then>
+            <f:else>
+                <g class="cb-stacktree__node cat-{n.category}{f:if(condition: n.planned, then: ' is-planned')}" transform="translate({n.x} {n.y})" style="--i:{n.depth}">
+                    <f:render partial="Tile" arguments="{n: n}" />
+                </g>
+            </f:else>
+        </f:if>
+    </f:for>
+</svg>
+</html>

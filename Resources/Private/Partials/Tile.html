@@ -1,0 +1,18 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<rect class="cb-stacktree__tile" width="{n.w}" height="{n.h}" rx="12" />
+<f:if condition="{n.icon}">
+    <f:then>
+        <image href="{f:uri.image(image: n.icon, width: '56c', height: '56c')}" x="12" y="{n.cy - 14}" width="28" height="28" />
+    </f:then>
+    <f:else>
+        <circle class="cb-stacktree__dot" cx="26" cy="{n.cy}" r="4.5" />
+    </f:else>
+</f:if>
+<text class="cb-stacktree__title" x="50" y="{n.titleY}" dominant-baseline="central">{n.title}</text>
+<f:if condition="{n.subtitle}">
+    <text class="cb-stacktree__sub" x="50" y="{n.subY}" dominant-baseline="central">{n.subtitle}</text>
+</f:if>
+<f:if condition="{n.tag}">
+    <text class="cb-stacktree__tag" x="{n.tagX}" y="{n.titleY}" text-anchor="end" dominant-baseline="central">{n.tag}</text>
+</f:if>
+</html>

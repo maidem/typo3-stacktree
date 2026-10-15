@@ -1,0 +1,155 @@
+/* Colours follow the host page (--ink/--paper) and fall back to system colours (backend). */
+.cb-stacktree {
+  --st-ink: var(--ink, CanvasText);
+  --st-paper: var(--paper, Canvas);
+  /* derived from ink/paper, so contrast follows the theme (light and dark) */
+  --st-muted: color-mix(in srgb, var(--st-ink) 70%, var(--st-paper));
+  --st-line: color-mix(in srgb, var(--st-ink) 45%, var(--st-paper));
+  margin-block: 2rem;
+}
+
+/* hosts that lay content out in CSS columns (dashboard page) would squeeze the diagram into one column */
+.frame-type-stacktree_tree {
+  column-span: all;
+}
+
+.cb-stacktree__heading {
+  margin: 0 0 1rem;
+}
+
+.cb-stacktree__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-inline: auto;
+  font-family: inherit;
+}
+
+/* Two SVGs are rendered. The inline max-width is the viewBox width (scale never above 1),
+   the horizontal tree only shows where it still renders at a readable scale. */
+.cb-stacktree__svg--h {
+  display: none;
+}
+
+@media (min-width: 75rem) {
+  .cb-stacktree__svg--h {
+    display: block;
+  }
+  .cb-stacktree__svg--v {
+    display: none;
+  }
+}
+
+.cb-stacktree__edge {
+  stroke: var(--st-line);
+  stroke-width: 1.5;
+  /* pathLength="1": dash length is independent of the real path length */
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: cb-stacktree-draw 0.9s ease-out forwards paused;
+  animation-delay: calc(var(--i) * 0.15s);
+}
+
+.cb-stacktree__edge.is-planned {
+  /* dashed look: repeat the pattern instead of one long dash */
+  stroke-dasharray: 0.012 0.012;
+  stroke-dashoffset: 0;
+  opacity: 0;
+  animation-name: cb-stacktree-fade;
+}
+
+.cb-stacktree__node {
+  opacity: 0;
+  animation: cb-stacktree-fade 0.4s ease-out forwards paused;
+  animation-delay: calc(0.2s + var(--i) * 0.15s);
+  color: inherit;
+}
+
+.cb-stacktree__node.is-planned {
+  --st-fade: 0.55;
+}
+
+.cb-stacktree__tile {
+  fill: color-mix(in srgb, var(--st-ink) 9%, var(--st-paper));
+  stroke: var(--st-line);
+  stroke-width: 1;
+  transition: stroke 0.15s;
+}
+
+.is-planned .cb-stacktree__tile {
+  stroke-dasharray: 5 4;
+}
+
+.cb-stacktree__dot {
+  fill: var(--st-accent, var(--st-muted));
+}
+
+.cat-own { --st-accent: #8b5cf6; }
+.cat-external { --st-accent: #8a8a8a; }
+.cat-frontend { --st-accent: #d97706; }
+.cat-infra { --st-accent: #3b82f6; }
+
+.cb-stacktree__tag {
+  fill: var(--st-muted);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cb-stacktree__title {
+  fill: var(--st-ink);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cb-stacktree__sub {
+  fill: var(--st-muted);
+  font-size: 12px;
+}
+
+a.cb-stacktree__node:hover .cb-stacktree__tile,
+a.cb-stacktree__node:focus-visible .cb-stacktree__tile {
+  stroke: var(--st-ink);
+}
+
+a.cb-stacktree__node:focus-visible {
+  outline: none;
+}
+
+/* started by the IntersectionObserver in Main.entry.js */
+.cb-stacktree.is-visible .cb-stacktree__edge,
+.cb-stacktree.is-visible .cb-stacktree__node {
+  animation-play-state: running;
+}
+
+/* without JS nothing would ever start the animation */
+@media (scripting: none) {
+  .cb-stacktree__edge,
+  .cb-stacktree__node {
+    animation-play-state: running;
+  }
+}
+
+@keyframes cb-stacktree-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes cb-stacktree-fade {
+  to {
+    opacity: var(--st-fade, 1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cb-stacktree__edge,
+  .cb-stacktree__node {
+    animation: none !important;
+    stroke-dashoffset: 0 !important;
+    opacity: var(--st-fade, 1) !important;
+  }
+  .cb-stacktree__edge.is-planned {
+    opacity: 1 !important;
+  }
+}
