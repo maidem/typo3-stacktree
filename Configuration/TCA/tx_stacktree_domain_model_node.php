@@ -10,6 +10,7 @@ return [
         'label_alt' => 'subtitle',
         'sortby' => 'sorting',
         'delete' => 'deleted',
+        'versioningWS' => true,
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'iconfile' => 'EXT:maidem_stacktree/Resources/Public/Icons/module.svg',
